@@ -1,0 +1,147 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\lukko\\Documents\\Projekty\\CobblerWorkshop\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0055C2CB-F81F-4FDF-986B-28F98D3EDD3D}|CobblerWorkshop\\CobblerWorkshop.csproj|c:\\users\\lukko\\documents\\projekty\\cobblerworkshop\\cobblerworkshop\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0055C2CB-F81F-4FDF-986B-28F98D3EDD3D}|CobblerWorkshop\\CobblerWorkshop.csproj|solutionrelative:cobblerworkshop\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\8.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0055C2CB-F81F-4FDF-986B-28F98D3EDD3D}|CobblerWorkshop\\CobblerWorkshop.csproj|c:\\users\\lukko\\documents\\projekty\\cobblerworkshop\\cobblerworkshop\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0055C2CB-F81F-4FDF-986B-28F98D3EDD3D}|CobblerWorkshop\\CobblerWorkshop.csproj|solutionrelative:cobblerworkshop\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0055C2CB-F81F-4FDF-986B-28F98D3EDD3D}|CobblerWorkshop\\CobblerWorkshop.csproj|c:\\users\\lukko\\documents\\projekty\\cobblerworkshop\\cobblerworkshop\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0055C2CB-F81F-4FDF-986B-28F98D3EDD3D}|CobblerWorkshop\\CobblerWorkshop.csproj|solutionrelative:cobblerworkshop\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0055C2CB-F81F-4FDF-986B-28F98D3EDD3D}|CobblerWorkshop\\CobblerWorkshop.csproj|c:\\users\\lukko\\documents\\projekty\\cobblerworkshop\\cobblerworkshop\\cobblerworkshop.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}",
+      "RelativeMoniker": "D:0:0:{0055C2CB-F81F-4FDF-986B-28F98D3EDD3D}|CobblerWorkshop\\CobblerWorkshop.csproj|solutionrelative:cobblerworkshop\\cobblerworkshop.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\7.0.200\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\7.0.200\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0055C2CB-F81F-4FDF-986B-28F98D3EDD3D}|CobblerWorkshop\\CobblerWorkshop.csproj|c:\\users\\lukko\\documents\\projekty\\cobblerworkshop\\cobblerworkshop\\cobblerworkshop.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{0055C2CB-F81F-4FDF-986B-28F98D3EDD3D}|CobblerWorkshop\\CobblerWorkshop.csproj|solutionrelative:cobblerworkshop\\cobblerworkshop.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Microsoft.NET.Sdk.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\8.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\8.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\8.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\8.0.203\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.targets",
+              "ViewState": "AQIAALECAAAAAAAAAAAAAMQCAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2024-04-10T16:54:23.97Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\lukko\\Documents\\Projekty\\CobblerWorkshop\\CobblerWorkshop\\App.xaml",
+              "RelativeDocumentMoniker": "CobblerWorkshop\\App.xaml",
+              "ToolTip": "C:\\Users\\lukko\\Documents\\Projekty\\CobblerWorkshop\\CobblerWorkshop\\App.xaml",
+              "RelativeToolTip": "CobblerWorkshop\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-07T20:56:25.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Microsoft.WinFX.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\7.0.200\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\7.0.200\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets",
+              "ViewState": "AQIAAL8AAAAAAAAAAAAAANoAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2024-04-07T20:37:10.929Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Microsoft.NET.TargetFrameworkInference.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\7.0.200\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\7.0.200\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.TargetFrameworkInference.targets",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2024-04-07T20:37:10.968Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CobblerWorkshop.csproj",
+              "DocumentMoniker": "C:\\Users\\lukko\\Documents\\Projekty\\CobblerWorkshop\\CobblerWorkshop\\CobblerWorkshop.csproj",
+              "RelativeDocumentMoniker": "CobblerWorkshop\\CobblerWorkshop.csproj",
+              "ToolTip": "C:\\Users\\lukko\\Documents\\Projekty\\CobblerWorkshop\\CobblerWorkshop\\CobblerWorkshop.csproj",
+              "RelativeToolTip": "CobblerWorkshop\\CobblerWorkshop.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-04-07T20:37:10.968Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CobblerWorkshop",
+              "DocumentMoniker": "C:\\Users\\lukko\\Documents\\Projekty\\CobblerWorkshop\\CobblerWorkshop\\CobblerWorkshop.csproj",
+              "RelativeDocumentMoniker": "CobblerWorkshop\\CobblerWorkshop.csproj",
+              "ToolTip": "C:\\Users\\lukko\\Documents\\Projekty\\CobblerWorkshop\\CobblerWorkshop\\CobblerWorkshop.csproj",
+              "RelativeToolTip": "CobblerWorkshop\\CobblerWorkshop.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-04-07T20:37:10.973Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\lukko\\Documents\\Projekty\\CobblerWorkshop\\CobblerWorkshop\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "CobblerWorkshop\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\lukko\\Documents\\Projekty\\CobblerWorkshop\\CobblerWorkshop\\MainWindow.xaml",
+              "RelativeToolTip": "CobblerWorkshop\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-07T20:34:14.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\lukko\\Documents\\Projekty\\CobblerWorkshop\\CobblerWorkshop\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "CobblerWorkshop\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\lukko\\Documents\\Projekty\\CobblerWorkshop\\CobblerWorkshop\\MainWindow.xaml.cs",
+              "RelativeToolTip": "CobblerWorkshop\\MainWindow.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T20:34:11.426Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
