@@ -1,9 +1,24 @@
 ﻿<Application x:Class="CobblerWorkshop.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:CobblerWorkshop"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:CobblerWorkshop" 
+             xmlns:views="clr-namespace:CobblerWorkshop.Views"
+             xmlns:viewModels="clr-namespace:CobblerWorkshop.ViewModels">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type viewModels:ClientsListViewModel}">
+                <views:ClientsListView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModels:TasksListViewModel}">
+                <views:TasksListView/>
+            </DataTemplate>
+
+            <FontFamily x:Key="FontAwesome-Solid">pack://application:,,,/Fonts/#Font Awesome 6 Free Solid</FontFamily>
+            <FontFamily x:Key="FontAwesome-Regular">pack://application:,,,/Fonts/#Font Awesome 6 Free Regular</FontFamily>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
