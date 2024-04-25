@@ -4,11 +4,102 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CobblerWorkshop.Views"
-      mc:Ignorable="d" 
+      xmlns:components="clr-namespace:CobblerWorkshop.Components"
+             mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Background="Blue">
+      Background="#f7f7f7">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="30*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Tasks" 
+                   Grid.Row="0" Grid.Column="0"
+                   TextAlignment="Left"
+                   FontSize="30"
+                   Margin="20 0 0 0"/>
+
+        <Button Content="+ Add New Task"
+                Grid.Row="0" Grid.Column="2"
+                Margin="30 10 30 0"
+                Command="{Binding Path=AddNewTaskCommand}"
+                Style="{StaticResource AddButtonTheme}"/>
+
+        <TextBlock Text="128 Open tasks" 
+           Grid.Row="1" Grid.Column="0"
+           TextAlignment="Left"
+           FontWeight="Bold"
+           FontSize="14"
+           VerticalAlignment="Bottom"
+           Margin="20 0"/>
+
+        <DockPanel  Grid.Row="1" Grid.Column="2"  
+                    DockPanel.Dock="Left"
+                    VerticalAlignment="Bottom"
+                    LastChildFill="True"
+                    Margin="20 0">
+            <Label Content="Filter by:"/>
+            <TextBox Text="Search in tasks..."
+                     TextAlignment="Center"
+                     VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <ListView  ItemsSource="{Binding Tasks}"
+                   Style="{StaticResource TableTheme}" 
+                   Grid.Row="2" Grid.ColumnSpan="3"
+                   Margin="10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"/>
+                    <GridViewColumn Header="StartDate" DisplayMemberBinding="{Binding StartDate}"/>
+                    <GridViewColumn Header="LastUpdateDate" DisplayMemberBinding="{Binding LastUpdateDate}"/>
+                    <GridViewColumn Header="EndDate" DisplayMemberBinding="{Binding EndDate}"/>
+                    <GridViewColumn Header="Actions">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <components:ActionButton Content="Details"
+                                            Icon="&#xf05a;"
+                                            Background="#f0ad4e"
+                                            Margin="0 0 5 0"
+                                            Command="{Binding Path=DataContext.DetailsClientCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}"
+                                            CommandParameter="{Binding}"/>
+                                    <components:ActionButton Content="Delete"
+                                            Icon="&#xf2ed;"
+                                            Background="#fc6b5e"
+                                            Command="{Binding Path=DataContext.DeleteClientCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}"
+                                            CommandParameter="{Binding}"/>
+                                </StackPanel>
+
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" 
+                    Orientation="Horizontal"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Margin="10">
+            <components:PagesButton Content="&lt;"/>
+            <components:PagesButton Content="1"/>
+            <components:PagesButton Content="2"/>
+            <components:PagesButton Content="3"/>
+            <Label Content="..."/>
+            <components:PagesButton Content="30"/>
+            <components:PagesButton Content=">"/>
+        </StackPanel>
     </Grid>
 </UserControl>

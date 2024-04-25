@@ -17,7 +17,7 @@ namespace CobblerWorkshop.ViewModels
         public MainViewModel(INavigationService navigationService)
         {
             _navigation = navigationService;
-            _navigation.NavigateTo<ClientsListViewModel>();
+            _navigation.NavigateTo<TasksListViewModel>();
         }
 
         [RelayCommand]

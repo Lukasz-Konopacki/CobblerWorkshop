@@ -14,10 +14,22 @@
                 <views:TasksListView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModels:AddTaskViewModel}">
+                <views:AddTaskView/>
+            </DataTemplate>
+
             <FontFamily x:Key="FontAwesome-Solid">pack://application:,,,/Fonts/#Font Awesome 6 Free Solid</FontFamily>
             <FontFamily x:Key="FontAwesome-Regular">pack://application:,,,/Fonts/#Font Awesome 6 Free Regular</FontFamily>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/PageButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/AddButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/TableTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ActionButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/AddFormLabelTheme.xaml"/>
+                <ResourceDictionary Source="Theme/AddFormInputTheme.xaml"/>
+                <ResourceDictionary Source="Theme/AddFormInputTheme.xaml"/>
+                <ResourceDictionary Source="Theme/AddFormButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

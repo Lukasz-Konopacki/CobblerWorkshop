@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="CobblerWorkshop.Views.AddTaskView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CobblerWorkshop.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1600"
+      Background="#f7f7f7">
+
+    <Grid>
+        <!--public RepairTask(int id, double price, TaskType taskType, string? description, DateTime startDate, Client client)
+            {
+                Id = id;
+                Price = price;
+                TaskType = taskType;
+                Description = description;
+                StartDate = startDate;
+                LastUpdateDate = startDate;
+                Client = client;
+                Status = TaskStatus.NewTask;
+            }-->
+        <DockPanel Margin="350 50">
+            <Border CornerRadius="30" BorderThickness="1" BorderBrush="#adadad" Background="#ffffff">
+                <StackPanel Margin="0 30 0 0">
+                    <Label Content="Task Typ:" Style="{StaticResource AddFormLabelTheme}"/>
+                    <ComboBox SelectedItem="{Binding SelectedTaskType}" ItemsSource="{Binding TasksTypes}"
+                              Style="{StaticResource AddFormInputTheme}"/>
+
+                    <Label Content="Descriptiotn:" Style="{StaticResource AddFormLabelTheme}"/>
+                    <TextBox Height="60" Text="{Binding Description}"
+                             Style="{StaticResource AddFormInputTheme}"
+                             TextWrapping="Wrap"
+                             AcceptsReturn="True"/> 
+
+                    <Label Content="Start Date:" Style="{StaticResource AddFormLabelTheme}"/>
+                    <DatePicker SelectedDateFormat="Long" SelectedDate="{Binding StartDate}" FirstDayOfWeek="Monday"
+                                Style="{StaticResource AddFormInputTheme}"/>
+
+                    <Label Content="Plan End Date:" Style="{StaticResource AddFormLabelTheme}"/>
+                    <DatePicker SelectedDateFormat="Long" SelectedDate="{Binding EndDate}" FirstDayOfWeek="Monday"
+                                Style="{StaticResource AddFormInputTheme}"/>
+
+                    <Label Content="Price:" Style="{StaticResource AddFormLabelTheme}"/>
+                    <TextBox Text="{Binding Price}"  Style="{StaticResource AddFormInputTheme}"/>
+
+                    <Label Content="Client Phone Number:" Style="{StaticResource AddFormLabelTheme}"/>
+                    <TextBox Text="{Binding ClientPhoneNumber}"  Style="{StaticResource AddFormInputTheme}"/>
+
+                    <Label Content="Client First Name:" Style="{StaticResource AddFormLabelTheme}"/>
+                    <TextBox Text="{Binding ClientFirstName}"  Style="{StaticResource AddFormInputTheme}"/>
+
+                    <Label Content="Client Last Name:" Style="{StaticResource AddFormLabelTheme}"/>
+                    <TextBox Text="{Binding ClientLastName}"  Style="{StaticResource AddFormInputTheme}"/>
+
+                    <Label Content="Client E-mail Address:" Style="{StaticResource AddFormLabelTheme}"/>
+                    <TextBox Text="{Binding ClientEmail}"  Style="{StaticResource AddFormInputTheme}"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                Margin="20">
+                        <Button Background="#4eaa9a"  Style="{StaticResource AddFormButtonTheme}">Save</Button>
+                        <Button Background="#fc6b5e"  Style="{StaticResource AddFormButtonTheme}">Back</Button>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </DockPanel>
+        
+    </Grid>
+</UserControl>

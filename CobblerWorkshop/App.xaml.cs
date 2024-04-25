@@ -1,5 +1,6 @@
 ﻿using CobblerWorkshop.Services;
 using CobblerWorkshop.Services.Navigation;
+using CobblerWorkshop.Services.TaskService;
 using CobblerWorkshop.ViewModels;
 using CobblerWorkshop.Views;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,7 @@ namespace CobblerWorkshop
             //ViewModele
             services.AddSingleton<MainViewModel>();
             services.AddTransient<TasksListViewModel>();
+            services.AddTransient<AddTaskViewModel>();
             services.AddTransient<ClientsListViewModel>();
             services.AddSingleton<Func<Type, object?, ViewModelBase>>(provaider => (viewModelType, param) =>
             {
@@ -35,6 +37,7 @@ namespace CobblerWorkshop
 
             //Serwisy
             services.AddSingleton<INavigationService, NavigationService>();
+            services.AddSingleton<ITaskService, TaskServicece>();
 
             _serviceProvider = services.BuildServiceProvider();
         }
