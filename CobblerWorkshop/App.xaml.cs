@@ -1,4 +1,5 @@
-﻿using CobblerWorkshop.Services;
+﻿using CobblerWorkshop.DbProviders;
+using CobblerWorkshop.Services;
 using CobblerWorkshop.Services.Navigation;
 using CobblerWorkshop.Services.TaskService;
 using CobblerWorkshop.ViewModels;
@@ -37,7 +38,8 @@ namespace CobblerWorkshop
 
             //Serwisy
             services.AddSingleton<INavigationService, NavigationService>();
-            services.AddSingleton<ITaskService, TaskServicece>();
+            services.AddSingleton<ITaskService, TaskServiceDb>();
+            services.AddDbContext<SqliteDbContext>();
 
             _serviceProvider = services.BuildServiceProvider();
         }

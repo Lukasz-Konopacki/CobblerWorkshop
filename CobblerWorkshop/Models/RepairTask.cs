@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,28 +13,36 @@ namespace CobblerWorkshop.Models
     /// </summary>
     public class RepairTask
     {
-        public int Id { get; private set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int? Id { get; private set; }
         public double Price { get; set; }
-        TaskType TaskType { get; set; }
-        string? Description { get; set; }
+        public string? Description { get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-        DateTime LastUpdateDate { get; set; } // Wyliczalne lub przez odpalanie funkcji
-        Client Client { get; set; }
+        public DateTime EndDate { get; set; }
+        public DateTime LastUpdateDate { get; set; }
+        public Client? Client { get; set; }
         public TaskStatus Status { get; set; }
+        public List<RepairTaskPosition> Positions { get; set; }
 
-        public RepairTask(int id, double price, TaskType taskType, string? description, DateTime startDate, Client client)
+        public RepairTask() { }
+
+        public RepairTask(double price, string? description,
+            DateTime startDate, DateTime endDate,
+            Client client, 
+            List<RepairTaskPosition> positions)
         {
-            Id = id;
             Price = price;
-            TaskType = taskType;
             Description = description;
             StartDate = startDate;
+            EndDate = endDate;
             LastUpdateDate = startDate;
             Client = client;
             Status = TaskStatus.NewTask;
+            Positions = positions;
         }
     }
+
 
     /// <summary>
     /// Status zadania

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,15 +10,18 @@ namespace CobblerWorkshop.Models
 {
     public class Client
     {
-        int Id { get; set; }
-        string? FirstName { get; set; }
-        string? LastName { get; set; }
-        string? Email { get; set; }
-        string? PhoneNumber { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int? Id { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? Email { get; set; }
+        public string? PhoneNumber { get; set; }
 
-        public Client(int id, string? firstName, string? lastName = null, string? phoneNumber = null, string? email =null)
+        public Client(){ }
+
+        public Client(string? firstName = null, string? lastName = null, string? phoneNumber = null, string? email =null)
         {
-            Id = id;
             FirstName = firstName;
             LastName = lastName;
             Email = email;
