@@ -111,8 +111,8 @@
                                     <DataTemplate>
                                         <ComboBox Width="150"
                                                 HorizontalAlignment="Stretch"
-                                                SelectedItem="{Binding TaskPositionType.Name}" 
-                                                ItemsSource="{Binding DataContext.TasksPostionTypes, 
+                                                SelectedItem="{Binding TaskType}" 
+                                                ItemsSource="{Binding DataContext.TaskTypes, 
                                                     RelativeSource={RelativeSource AncestorType=ListView}}"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>

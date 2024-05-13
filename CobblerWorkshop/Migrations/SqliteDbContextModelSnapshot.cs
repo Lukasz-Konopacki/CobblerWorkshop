@@ -52,7 +52,7 @@ namespace CobblerWorkshop.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("EndDate")
+                    b.Property<DateTime>("EndDate")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("LastUpdateDate")
@@ -92,19 +92,19 @@ namespace CobblerWorkshop.Migrations
                     b.Property<int?>("RepairTaskId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("TaskPositionTypeId")
+                    b.Property<int?>("TaskTypeId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RepairTaskId");
 
-                    b.HasIndex("TaskPositionTypeId");
+                    b.HasIndex("TaskTypeId");
 
                     b.ToTable("RepairTaskPositions");
                 });
 
-            modelBuilder.Entity("CobblerWorkshop.Models.TaskPositionType", b =>
+            modelBuilder.Entity("CobblerWorkshop.Models.TaskType", b =>
                 {
                     b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
@@ -119,7 +119,7 @@ namespace CobblerWorkshop.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TaskPositionTypes");
+                    b.ToTable("TaskTypes");
                 });
 
             modelBuilder.Entity("CobblerWorkshop.Models.RepairTask", b =>
@@ -137,11 +137,11 @@ namespace CobblerWorkshop.Migrations
                         .WithMany("Positions")
                         .HasForeignKey("RepairTaskId");
 
-                    b.HasOne("CobblerWorkshop.Models.TaskPositionType", "TaskPositionType")
+                    b.HasOne("CobblerWorkshop.Models.TaskType", "TaskType")
                         .WithMany()
-                        .HasForeignKey("TaskPositionTypeId");
+                        .HasForeignKey("TaskTypeId");
 
-                    b.Navigation("TaskPositionType");
+                    b.Navigation("TaskType");
                 });
 
             modelBuilder.Entity("CobblerWorkshop.Models.RepairTask", b =>

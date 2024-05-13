@@ -1,4 +1,5 @@
 ﻿using CobblerWorkshop.Services;
+using CobblerWorkshop.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
@@ -32,6 +33,11 @@ namespace CobblerWorkshop.ViewModels
             Navigation.NavigateTo<ClientsListViewModel>();
         }
 
+        [RelayCommand]
+        public void NavigateToTaskTypesList()
+        {
+            Navigation.NavigateTo<TaskTypeListViewModel>();
+        }
     }
 }
 

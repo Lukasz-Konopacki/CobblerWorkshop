@@ -26,6 +26,7 @@
             Cobbler
                 </TextBlock>
                 <components:MenuButton Command="{Binding Path=NavigateToTasksListCommand}" Content="Tasks" Icon="list" />
+                <components:MenuButton Command="{Binding Path=NavigateToTaskTypesListCommand}" Content="Task Types" Icon="&#xf7d9;"/>
                 <components:MenuButton Command="{Binding Path=NavigateToClientListCommand}" Content="Clients" Icon="user"/>
             </StackPanel>
         </Border>

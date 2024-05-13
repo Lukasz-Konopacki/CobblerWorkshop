@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace CobblerWorkshop.Models
 {
-    public class TaskPositionType
+    public class TaskType
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? Id { get; set; }
         public string Name { get; set; }
         public double SuggestPrice { get; set; }
-        public TaskPositionType(string name, double suggestPrice)
+        public TaskType(string name, double suggestPrice)
         {
             Name = name;
             SuggestPrice = suggestPrice;
         }
-        public TaskPositionType() {}
+        public TaskType() {}
 
         public override string ToString()
         {

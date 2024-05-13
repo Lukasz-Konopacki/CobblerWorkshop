@@ -16,16 +16,16 @@ namespace CobblerWorkshop.Models
         public int No { get; set; }
         public string? Name { get; set; }
         public int? NumberOfShoes { get; set; }
-        public TaskPositionType? TaskPositionType { get; set; }
+        public TaskType? TaskType { get; set; }
 
         public RepairTaskPosition() { }
 
-        public RepairTaskPosition(int no,string? name, int numberOfShoes, TaskPositionType taskPositionType)
+        public RepairTaskPosition(int no,string? name, int numberOfShoes, TaskType? taskType = null)
         {
             No = no;
             Name = name;
             NumberOfShoes = numberOfShoes;
-            TaskPositionType = taskPositionType;
+            TaskType = taskType;
         }
     }
 }

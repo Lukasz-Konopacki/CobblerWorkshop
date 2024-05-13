@@ -6,16 +6,25 @@
              xmlns:viewModels="clr-namespace:CobblerWorkshop.ViewModels">
     <Application.Resources>
         <ResourceDictionary>
-            <DataTemplate DataType="{x:Type viewModels:ClientsListViewModel}">
-                <views:ClientsListView/>
-            </DataTemplate>
-
             <DataTemplate DataType="{x:Type viewModels:TasksListViewModel}">
                 <views:TasksListView/>
             </DataTemplate>
-
             <DataTemplate DataType="{x:Type viewModels:AddTaskViewModel}">
                 <views:AddTaskView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModels:TaskTypeListViewModel}">
+                <views:TaskTypeListView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:AddTaskTypeViewModel}">
+                <views:AddTaskTypeView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModels:ClientsListViewModel}">
+                <views:ClientsListView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:AddClientViewModel}">
+                <views:AddClientView/>
             </DataTemplate>
 
             <FontFamily x:Key="FontAwesome-Solid">pack://application:,,,/Fonts/#Font Awesome 6 Free Solid</FontFamily>

@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="CobblerWorkshop.Views.AddTaskTypeView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:local="clr-namespace:CobblerWorkshop.Views" 
+            xmlns:components="clr-namespace:CobblerWorkshop.Components"
+                   mc:Ignorable="d" 
+            d:DesignHeight="900" d:DesignWidth="1600"
+            Background="#f7f7f7">
+    <StackPanel>
+        <DockPanel Grid.Column="0" Margin="400 50">
+            <Border CornerRadius="30" BorderThickness="1" BorderBrush="#adadad" Background="#ffffff">
+                <StackPanel Margin="0 30 0 30">
+
+                    <Label Content="Name:" Style="{StaticResource AddFormLabelTheme}"/>
+                    <TextBox Text="{Binding Name}"  Style="{StaticResource AddFormInputTheme}"/>
+
+                    <Label Content="Price:" Style="{StaticResource AddFormLabelTheme}"/>
+                    <TextBox Text="{Binding SuggestPrice}"  Style="{StaticResource AddFormInputTheme}"/>
+                </StackPanel>
+            </Border>
+        </DockPanel>
+
+        <DockPanel Grid.Column="0" Grid.Row="1"
+               Grid.ColumnSpan="2"
+               Margin="50 50">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Background="#4eaa9a"  Style="{StaticResource AddFormButtonTheme}" Command="{Binding Path=SaveCommand}">Save</Button>
+                <Button Background="#fc6b5e"  Style="{StaticResource AddFormButtonTheme}" Command="{Binding Path=BackCommand}">Back</Button>
+            </StackPanel>
+        </DockPanel>
+    </StackPanel>
+</UserControl>

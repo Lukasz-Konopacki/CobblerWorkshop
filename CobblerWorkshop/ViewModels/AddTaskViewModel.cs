@@ -1,5 +1,6 @@
 ﻿using CobblerWorkshop.Models;
 using CobblerWorkshop.Services;
+using CobblerWorkshop.Services.ClientService;
 using CobblerWorkshop.Services.TaskService;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -40,31 +41,34 @@ namespace CobblerWorkshop.ViewModels
         [ObservableProperty]
         private ObservableCollection<RepairTaskPosition> _listOfTaskPosition;
         [ObservableProperty]
-        private ObservableCollection<string> _tasksPostionTypes;
+        private ObservableCollection<TaskType> _taskTypes;
 
         private readonly ITaskService _taskService;
+        private readonly IClientService _clientService;
         private readonly INavigationService _navigationService;
 
         private readonly RepairTask? _task;
 
-        public AddTaskViewModel(ITaskService taskService, INavigationService navigationService)
+        public AddTaskViewModel(INavigationService navigationService, ITaskService taskService, IClientService clientService)
         {
             _taskService = taskService;
+            _clientService = clientService;
             _navigationService = navigationService;
 
-            _tasksPostionTypes = new ObservableCollection<string>(taskService.GetTaskPositionTypes().Select(t => t.Name));
+            _taskTypes = new ObservableCollection<TaskType>(taskService.GetTaskTypes());
 
 
             StartDate = DateTime.Now;
             EndDate = DateTime.Now.AddDays(7);
             ListOfTaskPosition = [];
         }
-        public AddTaskViewModel(int taskId,ITaskService taskService, INavigationService navigationService)
+        public AddTaskViewModel(int taskId,ITaskService taskService, INavigationService navigationService, IClientService clientService)
         {
             _taskService = taskService;
+            _clientService = clientService;
             _navigationService = navigationService;
 
-            _tasksPostionTypes = new ObservableCollection<string>(taskService.GetTaskPositionTypes().Select(t => t.Name));
+            _taskTypes = new ObservableCollection<TaskType>(taskService.GetTaskTypes());
 
             var task = taskService.GetTaskById(taskId);
             if(task is not null)
@@ -74,31 +78,26 @@ namespace CobblerWorkshop.ViewModels
                 Description = task.Description;
                 StartDate = task.StartDate;
                 EndDate = task.EndDate;
+                ListOfTaskPosition = new ObservableCollection<RepairTaskPosition>(task?.Positions ?? []);
                 if (task.Client is not null)
                 {
                     ClientPhoneNumber = task.Client.PhoneNumber;
                     ClientFirstName = task.Client.FirstName;
                     ClientLastName = task.Client.LastName;
                     ClientEmail = task.Client.Email;
-                    ListOfTaskPosition = new ObservableCollection<RepairTaskPosition>(task.Positions) ?? [];
                 }
             }
             else
             {
-                throw new ArgumentException($"Task with ID: {task.Id} doesn't exist");
+                throw new ArgumentException($"Task with ID: {taskId} doesn't exist");
             }   
         }
 
         [RelayCommand]
         private void AddTasKPosition()
         {
-            ListOfTaskPosition.Add(new RepairTaskPosition(ListOfTaskPosition.Count + 1,"", 0, new TaskPositionType("Naprawa flekow", 30.70)));
-        }
-
-        [RelayCommand]
-        private void Back()
-        {
-            _navigationService.NavigateTo<TasksListViewModel>();
+            ListOfTaskPosition.Add(new RepairTaskPosition(ListOfTaskPosition.Count + 1,"", 0));
+            CollectionViewSource.GetDefaultView(ListOfTaskPosition).Refresh();
         }
 
         [RelayCommand]
@@ -134,14 +133,27 @@ namespace CobblerWorkshop.ViewModels
                 _task.LastUpdateDate = DateTime.Now;
                 _task.EndDate = EndDate;
                 _task.StartDate = StartDate;
-                _task.Positions = [.. ListOfTaskPosition];
 
-                if(_task.Client is not null)
+                if (_task.Client?.Id is null)
+                {
+                    Client client = new Client(ClientFirstName, ClientLastName, ClientPhoneNumber, ClientEmail);
+                    _clientService.AddClient(client);
+                    _task.Client = client;
+                }
+                else
                 {
                     _task.Client.FirstName = ClientFirstName;
                     _task.Client.LastName = ClientLastName;
                     _task.Client.PhoneNumber = ClientPhoneNumber;
                     _task.Client.Email = ClientEmail;
+
+                    _clientService.EditClient(_task.Client);
+                }
+
+                _task.Positions = [.. ListOfTaskPosition];
+                foreach (var position in _task.Positions)
+                {
+                    _taskService.EditTaskPosition(position);
                 }
 
 
@@ -151,5 +163,10 @@ namespace CobblerWorkshop.ViewModels
             _navigationService.NavigateTo<TasksListViewModel>();
         }
 
+        [RelayCommand]
+        private void Back()
+        {
+            _navigationService.NavigateTo<TasksListViewModel>();
+        }
     }
 }

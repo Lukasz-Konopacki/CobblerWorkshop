@@ -13,6 +13,14 @@ namespace CobblerWorkshop.Services.TaskService
         public bool AddTask(RepairTask task);
         public bool EditTask(RepairTask task);
         public bool DeleteTask(int id);
-        public IEnumerable<TaskPositionType> GetTaskPositionTypes();
+
+        public bool EditTaskPosition(RepairTaskPosition taskPosition);
+        public bool DeleteTaskPosition(RepairTaskPosition taskPosition);
+
+        public IEnumerable<TaskType> GetTaskTypes();
+        public TaskType? GetTaskTypeById(int id);
+        public bool AddTaskType(TaskType taskType);
+        public bool EditTaskType(TaskType taskType);
+        public bool DeleteTaskType(int Id);
     }
 }

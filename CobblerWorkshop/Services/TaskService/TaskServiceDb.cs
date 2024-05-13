@@ -18,6 +18,11 @@ namespace CobblerWorkshop.Services.TaskService
             _context = databaseContext;
         }
 
+        /// <summary>
+        /// Task
+        /// </summary>
+        /// <returns></returns>
+
         public IEnumerable<RepairTask> GetAllTasks()
         {
             return _context.RepairTasks.ToList();
@@ -25,12 +30,10 @@ namespace CobblerWorkshop.Services.TaskService
 
         public RepairTask? GetTaskById(int id)
         {
-            return _context.RepairTasks.SingleOrDefault(t => t.Id == id);
-        }
-
-        public IEnumerable<TaskPositionType> GetTaskPositionTypes()
-        {
-            return _context.TaskPositionTypes.ToList();
+            return _context.RepairTasks
+                .Include(t => t.Client)
+                .Include(t => t.Positions)
+                .SingleOrDefault(t => t.Id == id);
         }
 
         public bool AddTask(RepairTask task)
@@ -38,6 +41,12 @@ namespace CobblerWorkshop.Services.TaskService
             _context.Add<RepairTask>(task);
             _context.SaveChanges();
 
+            return true;
+        }
+        public bool EditTask(RepairTask task)
+        {
+            _context.Update<RepairTask>(task);
+            _context.SaveChanges();
             return true;
         }
 
@@ -59,13 +68,74 @@ namespace CobblerWorkshop.Services.TaskService
             return true;
         }
 
-        public bool EditTask(RepairTask task)
+        /// <summary>
+        /// RepairTaskPosition
+        /// </summary>
+        /// <param name="taskPosition"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+
+        public bool EditTaskPosition(RepairTaskPosition taskPosition)
         {
-            _context.Update<RepairTask>(task);
+            _context.RepairTaskPositions.Update(taskPosition);
             _context.SaveChanges();
             return true;
         }
 
+        public bool DeleteTaskPosition(RepairTaskPosition taskPosition)
+        {
+            _context.RepairTaskPositions.Remove(taskPosition);
+            _context.SaveChanges();
+            return true;
+        }
 
+        /// <summary>
+        /// Task Types
+        /// </summary>
+        /// <returns></returns>
+
+        public IEnumerable<TaskType> GetTaskTypes()
+        {
+            return _context.TaskTypes.ToList();
+        }
+
+        public TaskType? GetTaskTypeById(int id)
+        {
+            return _context.TaskTypes.FirstOrDefault(t => t.Id == id);
+        }
+
+        public bool AddTaskType(TaskType taskType)
+        {
+            _context.TaskTypes.Add(taskType);
+            _context.SaveChanges();
+            return true;
+        }
+
+        public bool EditTaskType(TaskType taskType)
+        {
+            _context.TaskTypes.Update(taskType);
+            _context.SaveChanges();
+            return true;
+        }
+
+        public bool DeleteTaskType(int id)
+        {
+            var taskType = _context.TaskTypes.FirstOrDefault(t => t.Id == id);
+            var tasksWithType = _context.RepairTaskPositions.Where(t => t.TaskType != null && t.TaskType.Id == id);
+
+            if (taskType == null)
+                return false;
+
+            foreach (var position in tasksWithType.ToList())
+            {
+                position.TaskType = null;
+                _context.RepairTaskPositions.Update(position);
+            }
+
+            // Usuń zadanie
+            _context.TaskTypes.Remove(taskType);
+            _context.SaveChanges();
+            return true;
+        }
     }
 }
