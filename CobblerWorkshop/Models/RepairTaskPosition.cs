@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -17,15 +18,18 @@ namespace CobblerWorkshop.Models
         public string? Name { get; set; }
         public int? NumberOfShoes { get; set; }
         public TaskType? TaskType { get; set; }
+        public double Price { get; set; }
+
 
         public RepairTaskPosition() { }
 
-        public RepairTaskPosition(int no,string? name, int numberOfShoes, TaskType? taskType = null)
+        public RepairTaskPosition(int no,string? name, int numberOfShoes, TaskType taskType)
         {
             No = no;
             Name = name;
             NumberOfShoes = numberOfShoes;
             TaskType = taskType;
+            Price = taskType.SuggestPrice;
         }
     }
 }

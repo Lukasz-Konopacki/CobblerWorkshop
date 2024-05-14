@@ -18,6 +18,7 @@ namespace CobblerWorkshop.Models
         public int? Id { get; private set; }
         public double Price { get; set; }
         public string? Description { get; set; }
+        public bool IsPaid { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public DateTime LastUpdateDate { get; set; }
@@ -27,13 +28,14 @@ namespace CobblerWorkshop.Models
 
         public RepairTask() { }
 
-        public RepairTask(double price, string? description,
+        public RepairTask(double price, string? description, bool isPaid,
             DateTime startDate, DateTime endDate,
             Client client, 
             List<RepairTaskPosition> positions)
         {
             Price = price;
             Description = description;
+            IsPaid = isPaid;
             StartDate = startDate;
             EndDate = endDate;
             LastUpdateDate = startDate;

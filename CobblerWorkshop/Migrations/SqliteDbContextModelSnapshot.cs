@@ -55,6 +55,9 @@ namespace CobblerWorkshop.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("IsPaid")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("TEXT");
 
@@ -88,6 +91,9 @@ namespace CobblerWorkshop.Migrations
 
                     b.Property<int?>("NumberOfShoes")
                         .HasColumnType("INTEGER");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("REAL");
 
                     b.Property<int?>("RepairTaskId")
                         .HasColumnType("INTEGER");

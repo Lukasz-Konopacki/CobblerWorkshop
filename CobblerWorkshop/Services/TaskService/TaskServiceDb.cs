@@ -25,7 +25,7 @@ namespace CobblerWorkshop.Services.TaskService
 
         public IEnumerable<RepairTask> GetAllTasks()
         {
-            return _context.RepairTasks.ToList();
+            return _context.RepairTasks.Include(t => t.Client).ToList();
         }
 
         public RepairTask? GetTaskById(int id)

@@ -29,6 +29,7 @@
 
             <FontFamily x:Key="FontAwesome-Solid">pack://application:,,,/Fonts/#Font Awesome 6 Free Solid</FontFamily>
             <FontFamily x:Key="FontAwesome-Regular">pack://application:,,,/Fonts/#Font Awesome 6 Free Regular</FontFamily>
+            
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/PageButtonTheme.xaml"/>
@@ -39,6 +40,7 @@
                 <ResourceDictionary Source="Theme/AddFormInputTheme.xaml"/>
                 <ResourceDictionary Source="Theme/AddFormInputTheme.xaml"/>
                 <ResourceDictionary Source="Theme/AddFormButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/AddFormComboBox.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -7,9 +7,15 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Xml.Linq;
 
@@ -22,6 +28,8 @@ namespace CobblerWorkshop.ViewModels
         private double? _price;
         [ObservableProperty]
         private string? _description;
+        [ObservableProperty]
+        private bool? _isPaid;
         [ObservableProperty]
         private DateTime _startDate;
         [ObservableProperty]
@@ -57,7 +65,6 @@ namespace CobblerWorkshop.ViewModels
 
             _taskTypes = new ObservableCollection<TaskType>(taskService.GetTaskTypes());
 
-
             StartDate = DateTime.Now;
             EndDate = DateTime.Now.AddDays(7);
             ListOfTaskPosition = [];
@@ -76,6 +83,7 @@ namespace CobblerWorkshop.ViewModels
                 _task = task;
                 Price = task.Price;
                 Description = task.Description;
+                IsPaid = task.IsPaid;
                 StartDate = task.StartDate;
                 EndDate = task.EndDate;
                 ListOfTaskPosition = new ObservableCollection<RepairTaskPosition>(task?.Positions ?? []);
@@ -96,7 +104,7 @@ namespace CobblerWorkshop.ViewModels
         [RelayCommand]
         private void AddTasKPosition()
         {
-            ListOfTaskPosition.Add(new RepairTaskPosition(ListOfTaskPosition.Count + 1,"", 0));
+            ListOfTaskPosition.Add(new RepairTaskPosition(ListOfTaskPosition.Count + 1,"", 0, TaskTypes[0]));
             CollectionViewSource.GetDefaultView(ListOfTaskPosition).Refresh();
         }
 
@@ -115,11 +123,35 @@ namespace CobblerWorkshop.ViewModels
         }
 
         [RelayCommand]
+        private void EditPrice(object parameters)
+        {
+            var values = (object[])parameters;
+
+            var price = Convert.ToDouble(values[0]);
+            var no = (int)values[1];
+            var task = ListOfTaskPosition.FirstOrDefault(t => t.No == no);
+
+            task.Price = price;
+            Price = ListOfTaskPosition.Sum(x => x.Price);
+        }
+
+        [RelayCommand]
+        private void EditTaskType(int no)
+        {
+            var taskPosition = ListOfTaskPosition.FirstOrDefault(t => t.No == no);
+            taskPosition.Price = taskPosition.TaskType.SuggestPrice;
+
+            Price = ListOfTaskPosition.Sum(x => x.Price);
+            CollectionViewSource.GetDefaultView(ListOfTaskPosition).Refresh();
+        }
+
+        [RelayCommand]
         private void Save()
         {
             if(_task is null)
             {
-                var task = new RepairTask(Price ?? 0f, Description, DateTime.Now, EndDate,
+                var task = new RepairTask(Price ?? 0f, Description, IsPaid ?? false, 
+                    DateTime.Now, EndDate,
                 new Client(ClientFirstName, ClientLastName, ClientPhoneNumber, ClientEmail),
                 [.. ListOfTaskPosition]);
 
@@ -130,6 +162,7 @@ namespace CobblerWorkshop.ViewModels
             {
                 _task.Price = Price ?? 0f;
                 _task.Description = Description;
+                _task.IsPaid = IsPaid ?? false;
                 _task.LastUpdateDate = DateTime.Now;
                 _task.EndDate = EndDate;
                 _task.StartDate = StartDate;
@@ -167,6 +200,19 @@ namespace CobblerWorkshop.ViewModels
         private void Back()
         {
             _navigationService.NavigateTo<TasksListViewModel>();
+        }
+    }
+
+    public class MyMultiConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            return values.Clone();
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
         }
     }
 }

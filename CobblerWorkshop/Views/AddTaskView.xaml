@@ -4,11 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CobblerWorkshop.Views" 
-      xmlns:components="clr-namespace:CobblerWorkshop.Components"
+      xmlns:components="clr-namespace:CobblerWorkshop.Components" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:vm="clr-namespace:CobblerWorkshop.ViewModels" 
              mc:Ignorable="d" 
       d:DesignHeight="900" d:DesignWidth="1600"
       Background="#f7f7f7">
 
+    <UserControl.Resources>
+        <vm:MyMultiConverter x:Key="MyMultiConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="6*"/>
@@ -38,6 +43,13 @@
 
                     <Label Content="Price:" Style="{StaticResource AddFormLabelTheme}"/>
                     <TextBox Text="{Binding Price}"  Style="{StaticResource AddFormInputTheme}"/>
+
+                    <Label Content="Is Paid:" Style="{StaticResource AddFormLabelTheme}"/>
+                    <ComboBox Style="{StaticResource AddFormInputTheme}"
+                        SelectedValue="{Binding IsPaid}" SelectedValuePath="Tag">
+                        <ComboBoxItem Tag="False">No</ComboBoxItem>
+                        <ComboBoxItem Tag="True">Yes</ComboBoxItem>
+                    </ComboBox>
 
                     <Label Content="Client Phone Number:" Style="{StaticResource AddFormLabelTheme}"/>
                     <TextBox Text="{Binding ClientPhoneNumber}"  Style="{StaticResource AddFormInputTheme}"/>
@@ -82,6 +94,26 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
+                            <GridViewColumn Header="Task Type">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox Width="150"
+                                                HorizontalAlignment="Stretch"
+                                                SelectedItem="{Binding TaskType}" 
+                                                ItemsSource="{Binding DataContext.TaskTypes, 
+                                                    RelativeSource={RelativeSource AncestorType=ListView}}">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="SelectionChanged">
+                                                    <i:InvokeCommandAction Command="{Binding Path=DataContext.EditTaskTypeCommand, 
+                                                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}"
+                                                        CommandParameter="{Binding No}"/>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers> 
+                                        </ComboBox>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
                             <GridViewColumn Header="Name">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
@@ -94,26 +126,26 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-
-
-                            <GridViewColumn Header="Number Of Shoes">
+                            <GridViewColumn Header="Price">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBox Width="110"
                                                  TextAlignment="Center"
-                                                 Text="{Binding NumberOfShoes}"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-
-                            <GridViewColumn Header="Task Type">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <ComboBox Width="150"
-                                                HorizontalAlignment="Stretch"
-                                                SelectedItem="{Binding TaskType}" 
-                                                ItemsSource="{Binding DataContext.TaskTypes, 
-                                                    RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                                 Text="{Binding Price}">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="TextChanged">
+                                                    <i:InvokeCommandAction Command="{Binding Path=DataContext.EditPriceCommand, 
+                                                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}">
+                                                        <i:InvokeCommandAction.CommandParameter>
+                                                            <MultiBinding Converter="{StaticResource MyMultiConverter}">
+                                                                <Binding Path="Text" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type TextBox}}"/>
+                                                                <Binding Path="No"/>
+                                                            </MultiBinding>
+                                                        </i:InvokeCommandAction.CommandParameter>
+                                                    </i:InvokeCommandAction>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </TextBox>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>

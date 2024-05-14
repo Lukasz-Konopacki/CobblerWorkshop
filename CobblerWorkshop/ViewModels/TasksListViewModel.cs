@@ -29,6 +29,7 @@ namespace CobblerWorkshop.ViewModels
             Tasks = new ObservableCollection<RepairTask>(_taskService.GetAllTasks().ToList());
         }
 
+
         [RelayCommand]
         public void AddNewTask()
         {

@@ -60,6 +60,9 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Phone Number" DisplayMemberBinding="{Binding Client.PhoneNumber}"/>
+                    <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}"/>
+                    <GridViewColumn Header="Is Paid" DisplayMemberBinding="{Binding IsPaid}"/>
                     <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"/>
                     <GridViewColumn Header="StartDate" DisplayMemberBinding="{Binding StartDate}"/>
                     <GridViewColumn Header="LastUpdateDate" DisplayMemberBinding="{Binding LastUpdateDate}"/>

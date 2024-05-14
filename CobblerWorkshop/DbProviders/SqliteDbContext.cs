@@ -11,7 +11,7 @@ namespace CobblerWorkshop.DbProviders
 {
     public class SqliteDbContext : DbContext
     {
-        private static string _connectionString => "data source=C:\\Users\\lukko\\Documents\\Projekty\\CobblerWorkshop\\Database\\SQLiteDB.db";
+        private static string _connectionString => "data source=C:\\Users\\lkonopacki\\Documents\\Projekty\\CobblerWorkshop\\Database\\SQLiteDB.db";
 
         public DbSet<RepairTask> RepairTasks { get; set; }
         public DbSet<RepairTaskPosition> RepairTaskPositions { get; set; }
