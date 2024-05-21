@@ -8,22 +8,19 @@ using System.Threading.Tasks;
 
 namespace CobblerWorkshop.Models
 {
-    public class TaskType
+    public class Resource
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public double SuggestPrice { get; set; }
-        public List<ResourcesPosition> Positions { get; set; }
+        public string Unit { get; set; }
 
-        public TaskType(string name, double suggestPrice, List<ResourcesPosition>? positions = null)
+        public Resource(string name, string unit)
         {
             Name = name;
-            SuggestPrice = suggestPrice;
-            Positions = positions ?? new List<ResourcesPosition>();
+            Unit = unit;
         }
-        public TaskType() {}
 
         public override string ToString()
         {
@@ -31,4 +28,3 @@ namespace CobblerWorkshop.Models
         }
     }
 }
-

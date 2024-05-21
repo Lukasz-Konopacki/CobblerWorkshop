@@ -26,6 +26,10 @@
             <DataTemplate DataType="{x:Type viewModels:AddClientViewModel}">
                 <views:AddClientView/>
             </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModels:ResourceListViewModel}">
+                <views:ResourceListView/>
+            </DataTemplate>
 
             <FontFamily x:Key="FontAwesome-Solid">pack://application:,,,/Fonts/#Font Awesome 6 Free Solid</FontFamily>
             <FontFamily x:Key="FontAwesome-Regular">pack://application:,,,/Fonts/#Font Awesome 6 Free Regular</FontFamily>

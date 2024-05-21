@@ -38,6 +38,12 @@ namespace CobblerWorkshop.ViewModels
         {
             Navigation.NavigateTo<TaskTypeListViewModel>();
         }
+
+        [RelayCommand]
+        public void NavigateToResourceList()
+        {
+            Navigation.NavigateTo<ResourceListViewModel>();
+        }
     }
 }
 

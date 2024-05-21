@@ -5,11 +5,12 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
             xmlns:local="clr-namespace:CobblerWorkshop.Views" 
             xmlns:components="clr-namespace:CobblerWorkshop.Components"
+            xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
                    mc:Ignorable="d" 
             d:DesignHeight="900" d:DesignWidth="1600"
             Background="#f7f7f7">
     <StackPanel>
-        <DockPanel Grid.Column="0" Margin="400 50">
+        <DockPanel Margin="400 30">
             <Border CornerRadius="30" BorderThickness="1" BorderBrush="#adadad" Background="#ffffff">
                 <StackPanel Margin="0 30 0 30">
 
@@ -21,6 +22,83 @@
                 </StackPanel>
             </Border>
         </DockPanel>
+
+        <Border CornerRadius="30" BorderThickness="1" BorderBrush="#adadad" Background="#ffffff" Margin="300 0" Height="400">
+            <StackPanel>
+                <!-- ADD New Shoe Position -->
+               <Button Background="#4eaa9a"  
+                    Style="{StaticResource AddFormButtonTheme}" 
+                    Margin="20" 
+                    Content="Add Resource"
+                    Command="{Binding Path=AddResourcePositionCommand}"/>
+
+               <ListView  ItemsSource="{Binding ResourcePositions}"
+                    Style="{StaticResource TableTheme}" 
+                    Margin="30 10">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Resource">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox Width="150"
+                                            HorizontalAlignment="Stretch"
+                                            SelectedItem="{Binding Resource}" 
+                                            ItemsSource="{Binding DataContext.ResourceTypes, 
+                                            RelativeSource={RelativeSource AncestorType=ListView}}">
+                                            <!--<i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="SelectionChanged">
+                                                    <i:InvokeCommandAction Command="{Binding Path=DataContext.EditTaskTypeCommand, 
+                                                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}"
+                                                        CommandParameter="{Binding Id}"/>
+                                                 </i:EventTrigger>
+                                            </i:Interaction.Triggers>-->
+                                        </ComboBox>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Quantity">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBox Width="130"
+                                                 TextAlignment="Center"
+                                                 Text="{Binding Quantity}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Header="Unit">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Width="130"
+                                                TextAlignment="Center"
+                                                Text="{Binding Resource.Unit}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Header="Action" Width="80">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <components:ActionButton Content="Delete"
+                                        Icon="&#xf2ed;"
+                                        Background="#fc6b5e"
+                                        Command="{Binding Path=DataContext.DeleteResourceCommand, 
+                                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}"
+                                        CommandParameter="{Binding Id}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </Border>
 
         <DockPanel Grid.Column="0" Grid.Row="1"
                Grid.ColumnSpan="2"

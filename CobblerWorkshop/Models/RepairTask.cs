@@ -23,7 +23,7 @@ namespace CobblerWorkshop.Models
         public DateTime EndDate { get; set; }
         public DateTime LastUpdateDate { get; set; }
         public Client? Client { get; set; }
-        public TaskStatus Status { get; set; }
+        public RepairTaskStatus Status { get; set; }
         public List<RepairTaskPosition> Positions { get; set; }
 
         public RepairTask() { }
@@ -40,7 +40,7 @@ namespace CobblerWorkshop.Models
             EndDate = endDate;
             LastUpdateDate = startDate;
             Client = client;
-            Status = TaskStatus.NewTask;
+            Status = RepairTaskStatus.New;
             Positions = positions;
         }
     }
@@ -49,10 +49,11 @@ namespace CobblerWorkshop.Models
     /// <summary>
     /// Status zadania
     /// </summary>
-    public enum TaskStatus
+    public enum RepairTaskStatus
     {
-        NewTask = 0,
-        WorkFinished = 1,
-        pickedUp = 2
+        Hold = 0,
+        New = 1,
+        Finished = 2,
+        Completed = 3
     }
 }

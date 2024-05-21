@@ -13,6 +13,8 @@ using System.Collections;
 using System.Diagnostics;
 using CobblerWorkshop.Views;
 using CobblerWorkshop.Services.ClientService;
+using System.Security.AccessControl;
+using CobblerWorkshop.Services.ResourceService;
 
 namespace CobblerWorkshop.ViewModels
 {
@@ -22,21 +24,29 @@ namespace CobblerWorkshop.ViewModels
         private string _name;
         [ObservableProperty]
         private double? _suggestPrice;
+        [ObservableProperty]
+        private ObservableCollection<ResourcesPosition> _resourcePositions;
+        [ObservableProperty]
+        private ObservableCollection<Resource> _resourceTypes;
 
         private readonly TaskType _taskType;
 
         private ITaskService _taskService;
         private INavigationService _navigationService;
+        private IResourceService _resourceService;
 
-        public AddTaskTypeViewModel(ITaskService taskService, INavigationService navigationService)
+        public AddTaskTypeViewModel(ITaskService taskService, INavigationService navigationService, IResourceService resourceService)
         {
             _taskService = taskService;
             _navigationService = navigationService;
+            _resourceService = resourceService;
 
             SuggestPrice = 0f;
+            ResourcePositions = new ObservableCollection<ResourcesPosition>();
+            ResourceTypes = new ObservableCollection<Resource>(resourceService.GetResources() ?? []);
         }
 
-        public AddTaskTypeViewModel(int taskTypeId,ITaskService taskService, INavigationService navigationService)
+        public AddTaskTypeViewModel(int taskTypeId,ITaskService taskService, INavigationService navigationService, IResourceService resourceService)
         {
             _taskService = taskService;
             _navigationService = navigationService;
@@ -47,11 +57,19 @@ namespace CobblerWorkshop.ViewModels
                 _taskType = taskType;
                 _name = _taskType.Name;
                 _suggestPrice = _taskType.SuggestPrice;
+                ResourcePositions = new ObservableCollection<ResourcesPosition>(_taskType.Positions ?? []);
+                ResourceTypes = new ObservableCollection<Resource>(resourceService.GetResources() ?? []);
             }
             else
             {
                 throw new ArgumentException($"Task Type with ID: {taskTypeId} doesn't exist");
             }
+        }
+
+        [RelayCommand]
+        private void AddResourcePosition()
+        {
+            ResourcePositions.Add(new ResourcesPosition());
         }
 
         [RelayCommand]

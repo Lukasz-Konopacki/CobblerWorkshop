@@ -17,6 +17,7 @@ namespace CobblerWorkshop.DbProviders
         public DbSet<RepairTaskPosition> RepairTaskPositions { get; set; }
         public DbSet<TaskType> TaskTypes { get; set; }
         public DbSet<Client> Clients { get; set; }
+        public DbSet<Resource> Resources { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

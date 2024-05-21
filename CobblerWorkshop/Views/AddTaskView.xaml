@@ -41,16 +41,6 @@
                     <DatePicker SelectedDateFormat="Long" SelectedDate="{Binding EndDate}" FirstDayOfWeek="Monday"
                                 Style="{StaticResource AddFormInputTheme}"/>
 
-                    <Label Content="Price:" Style="{StaticResource AddFormLabelTheme}"/>
-                    <TextBox Text="{Binding Price}"  Style="{StaticResource AddFormInputTheme}"/>
-
-                    <Label Content="Is Paid:" Style="{StaticResource AddFormLabelTheme}"/>
-                    <ComboBox Style="{StaticResource AddFormInputTheme}"
-                        SelectedValue="{Binding IsPaid}" SelectedValuePath="Tag">
-                        <ComboBoxItem Tag="False">No</ComboBoxItem>
-                        <ComboBoxItem Tag="True">Yes</ComboBoxItem>
-                    </ComboBox>
-
                     <Label Content="Client Phone Number:" Style="{StaticResource AddFormLabelTheme}"/>
                     <TextBox Text="{Binding ClientPhoneNumber}"  Style="{StaticResource AddFormInputTheme}"/>
 
@@ -62,6 +52,17 @@
 
                     <Label Content="Client E-mail Address:" Style="{StaticResource AddFormLabelTheme}"/>
                     <TextBox Text="{Binding ClientEmail}"  Style="{StaticResource AddFormInputTheme}"/>
+
+
+                    <Label Content="Is Paid:" Style="{StaticResource AddFormLabelTheme}" Foreground="Orange"/>
+                    <ComboBox Style="{StaticResource AddFormInputTheme}"
+                        SelectedValue="{Binding IsPaid}" SelectedValuePath="Tag">
+                        <ComboBoxItem Tag="False">No</ComboBoxItem>
+                        <ComboBoxItem Tag="True">Yes</ComboBoxItem>
+                    </ComboBox>
+
+                    <Label Content="Price:" Style="{StaticResource AddFormLabelTheme}"/>
+                    <TextBlock Text="{Binding Price}"  Margin="70 0" FontSize="20" FontWeight="Bold" Foreground="Green"/>
                 </StackPanel>
             </Border>
         </DockPanel>

@@ -110,6 +110,39 @@ namespace CobblerWorkshop.Migrations
                     b.ToTable("RepairTaskPositions");
                 });
 
+            modelBuilder.Entity("CobblerWorkshop.Models.Resource", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Unit")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Resources");
+                });
+
+            modelBuilder.Entity("CobblerWorkshop.Models.ResourcesPosition", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ResourcesPosition");
+                });
+
             modelBuilder.Entity("CobblerWorkshop.Models.TaskType", b =>
                 {
                     b.Property<int?>("Id")
@@ -150,7 +183,31 @@ namespace CobblerWorkshop.Migrations
                     b.Navigation("TaskType");
                 });
 
+            modelBuilder.Entity("CobblerWorkshop.Models.ResourcesPosition", b =>
+                {
+                    b.HasOne("CobblerWorkshop.Models.Resource", "Resource")
+                        .WithMany()
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CobblerWorkshop.Models.TaskType", "TaskType")
+                        .WithMany("Positions")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Resource");
+
+                    b.Navigation("TaskType");
+                });
+
             modelBuilder.Entity("CobblerWorkshop.Models.RepairTask", b =>
+                {
+                    b.Navigation("Positions");
+                });
+
+            modelBuilder.Entity("CobblerWorkshop.Models.TaskType", b =>
                 {
                     b.Navigation("Positions");
                 });

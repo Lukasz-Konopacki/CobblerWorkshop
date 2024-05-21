@@ -3,12 +3,7 @@ using CobblerWorkshop.Services;
 using CobblerWorkshop.Services.TaskService;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 
 namespace CobblerWorkshop.ViewModels
@@ -20,11 +15,19 @@ namespace CobblerWorkshop.ViewModels
 
         [ObservableProperty]
         private ObservableCollection<RepairTask> _tasks;
+        [ObservableProperty]
+        private ObservableCollection<RepairTaskStatus> _statusTypes;
 
         public TasksListViewModel(INavigationService navigationService,ITaskService taskService)
         {
            _navigationService = navigationService;
            _taskService = taskService;
+
+            _statusTypes = new ObservableCollection<RepairTaskStatus>();
+            foreach (RepairTaskStatus status in Enum.GetValues(typeof(RepairTaskStatus)))
+            {
+                _statusTypes.Add(status);
+            }
 
             Tasks = new ObservableCollection<RepairTask>(_taskService.GetAllTasks().ToList());
         }
@@ -51,7 +54,12 @@ namespace CobblerWorkshop.ViewModels
             CollectionViewSource.GetDefaultView(Tasks).Refresh();
         }
 
-
+        [RelayCommand]
+        public void EditStatus(int TaskId)
+        {
+            var task = Tasks.FirstOrDefault(t => t.Id == TaskId);
+            _taskService.EditTask(task);
+        }
 
     }
 }

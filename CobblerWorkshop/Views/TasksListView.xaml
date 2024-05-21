@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CobblerWorkshop.Views"
-      xmlns:components="clr-namespace:CobblerWorkshop.Components"
+      xmlns:components="clr-namespace:CobblerWorkshop.Components" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Background="#f7f7f7">
@@ -61,7 +61,27 @@
                 <GridView>
                     <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
                     <GridViewColumn Header="Phone Number" DisplayMemberBinding="{Binding Client.PhoneNumber}"/>
-                    <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}"/>
+                    <GridViewColumn Header="Status">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <ComboBox Width="150"
+                                        HorizontalAlignment="Stretch"
+                                        SelectedItem="{Binding Status}" 
+                                        ItemsSource="{Binding DataContext.StatusTypes, 
+                                            RelativeSource={RelativeSource AncestorType=ListView}}">
+                                    <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding Path=DataContext.EditStatusCommand, 
+                                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}"
+                                            CommandParameter="{Binding Id}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    </ComboBox>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Is Paid" DisplayMemberBinding="{Binding IsPaid}"/>
                     <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"/>
                     <GridViewColumn Header="StartDate" DisplayMemberBinding="{Binding StartDate}"/>

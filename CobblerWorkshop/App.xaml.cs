@@ -2,13 +2,11 @@
 using CobblerWorkshop.Services;
 using CobblerWorkshop.Services.ClientService;
 using CobblerWorkshop.Services.Navigation;
+using CobblerWorkshop.Services.ResourceService;
 using CobblerWorkshop.Services.TaskService;
 using CobblerWorkshop.ViewModels;
 using CobblerWorkshop.Views;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Configuration;
-using System.Data;
 using System.Windows;
 
 namespace CobblerWorkshop
@@ -39,6 +37,8 @@ namespace CobblerWorkshop
             services.AddTransient<ClientsListViewModel>();
             services.AddTransient<AddClientViewModel>();
 
+            services.AddTransient<ResourceListViewModel>();
+
             services.AddSingleton<Func<Type, object?, ViewModelBase>>(provaider => (viewModelType, param) =>
             {
                 return param == null ? (ViewModelBase)provaider.GetRequiredService(viewModelType) : (ViewModelBase)ActivatorUtilities.CreateInstance(provaider, viewModelType, param);
@@ -48,6 +48,7 @@ namespace CobblerWorkshop
             services.AddSingleton<INavigationService, NavigationService>();
             services.AddSingleton<ITaskService, TaskServiceDb>();
             services.AddSingleton<IClientService, ClientService>();
+            services.AddSingleton<IResourceService, ResourceService>();
             services.AddDbContext<SqliteDbContext>();
 
             _serviceProvider = services.BuildServiceProvider();
